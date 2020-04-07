@@ -13,7 +13,9 @@ routes.post("/users", UsersController.create);
 // CRUD Devices
 routes.post("/devices", DevicesController.create);
 routes.get("/devices", DevicesController.read);
-routes.put("/devices/:id", DevicesController.update);
-routes.delete("/devices/:id");
+routes.put("/devices/:idDevice", DevicesController.update);
+routes.put("/devices/:idDevice/:comodoDevice", DevicesController.update);
+
+routes.delete("/devices/:id", DevicesController.delete);
 
 module.exports = routes;

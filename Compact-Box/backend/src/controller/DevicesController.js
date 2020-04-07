@@ -20,11 +20,13 @@ module.exports = {
         return response.json(devices);
     },
     async update(request, response) {
-        const id = request.query.id;
+        const {idDevice, comodoDevice} = request.params;
 
-        console.log(id);
+        let {identificacao, comodo, estado} = await Devices.findOne({ identificacao: idDevice });
 
-        let {identificacao, comodo, estado} = await Devices.findOne({ identificacao: id });
+        if(comodoDevice){
+            comodo = comodoDevice
+        }
 
         if(estado === false){
             estado = true;
@@ -39,6 +41,11 @@ module.exports = {
                 estado
             }
         })
+        return response.json(device);
+    },
+    async delete(request, response) {
+        const id = request.params.id;
+        const device = await Devices.deleteOne({ identificacao: id});
         return response.json(device);
     }
 };
