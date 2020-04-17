@@ -3,6 +3,7 @@ const Devices = require("../models/Devices");
 module.exports = {
     async create(request, response) {
         const {identificacao, comodo} = request.body;
+
         const estado = false;
         let device = await Devices.findOne({ identificacao });
         

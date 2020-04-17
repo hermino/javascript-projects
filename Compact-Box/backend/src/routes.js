@@ -9,6 +9,7 @@ routes.post("/session", (request, response) => {
 });
 
 routes.post("/users", UsersController.create);
+routes.get("/users", UsersController.read);
 
 // CRUD Devices
 routes.post("/devices", DevicesController.create);
